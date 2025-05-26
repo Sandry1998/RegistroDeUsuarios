@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/header.html :: head}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+<header th:insert="~{fragments/header.html :: header}"></header>
+<div class="container">
+
+    <h1>EDITAR USUARIO</h1>
+    <form class="row g-3" th:object="${usuario}" th:action="@{/modificar}" method="POST">
+        <input type="hidden" th:field="${usuario.idUsuario}">
+        <div class="col-md-4">
+            <label for="validationServer01" class="form-label">Nombre y Apellidos</label>
+            <input type="text" class="form-control" id="validationServer01" required th:field="*{nombreApellidos}" th:value="${usuario.getNombreApellidos()}">
+            <div class="valid-feedback">
+                Bien
+            </div>
+            <div class="invalid-feedback">
+                Indique el nombre y apellidos
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationServer02" class="form-label">Email</label>
+            <input type="text" class="form-control" id="validationServer02" th:field="*{email}" th:value="${usuario.getEmail()}" required>
+            <div class="valid-feedback">
+                Bien
+            </div>
+            <div class="invalid-feedback">
+                Indique el email
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationServerUsername" class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                <input type="text" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required
+                th:field="*{username}" th:value="${usuario.getNombreApellidos()}">
+                <div class="valid-feedback">
+                    Bien
+                </div>
+                <div class="invalid-feedback">
+                    Indique el username
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationServer03" class="form-label">Password</label>
+            <input type="text" class="form-control" id="validationServer03" aria-describedby="validationServer03Feedback" required th:field="*{password}"  th:value="${usuario.getPassword()}">
+            <div class="valid-feedback">
+                Bien
+            </div>
+            <div class="invalid-feedback">
+                Indique el Password
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationServer05" class="form-label">Fecha de Alta</label>
+            <input type="date" class="form-control" id="validationServer05" aria-describedby="validationServer05Feedback" required th:value="${usuario.getFechaRegistro()}" th:field="*{fechaRegistro}">
+            <div class="valid-feedback"></div>
+            <div class="valid-feedback">
+                Bien
+            </div>
+            <div class="invalid-feedback">
+                Indique la fecha de registro
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+                <label class="form-check-label" for="invalidCheck3">
+                    Acepta los términos y condiciones
+                </label>
+                <div id="invalidCheck3Feedback" class="invalid-feedback">
+                    Debe aceptar para continuar.
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Modificar Datos</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
